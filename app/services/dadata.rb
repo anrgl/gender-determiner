@@ -1,4 +1,4 @@
-class Dadata
+class Dadata < ApplicationService
   def initialize(auth_token, x_secret, full_name)
     @auth_token = auth_token
     @x_secret = x_secret
@@ -11,12 +11,12 @@ class Dadata
     RestClient.post('https://cleaner.dadata.ru/api/v1/clean/name', payload.to_json, headers)
   end
 
-  def gender(resp)
+  def self.gender(resp)
     body = resp.body.force_encoding('UTF-8')
     JSON.parse(body).first['gender']
   end
 
-  def last_request(resp)
+  def self.last_request(resp)
     resp.headers[:date]
   end
 end
