@@ -1,8 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Users</h1>
-
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Full name</th>
@@ -19,7 +15,7 @@
         <td><%= user.full_name %></td>
         <td><%= user.gender %></td>
         <td><%= user.is_admin %></td>
-        <td><%= user.last_request %></td>
+        <td><%= user.last_request.to_formatted_s(:short) %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -28,6 +24,10 @@
   </tbody>
 </table>
 
-<br>
+<div>
+  <h4>You gender: <%= current_user.gender %>. Correct?</h4>
 
-<%= link_to 'New User', new_user_path %>
+  <%= link_to "Correct", save_gender_path, method: :post, data: { confirm: 'Are you sure? '} %>
+  <%= link_to "Incorrect", edit_user_path(current_user) %>
+
+</div>
