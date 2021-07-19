@@ -63,6 +63,15 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def check_gender
+    @user = User.find(params[:id])
+    data = Dadata.check_gender(@user.full_name)
+    @user.gender = data[:gender]
+    @user.last_request = data[:last_request]
+    @user.save
+    redirect_to root_path, notice: "Gender checked!"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

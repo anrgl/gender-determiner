@@ -16,11 +16,9 @@ class User < ApplicationRecord
 
   private
   def last_request_and_gender
-    auth_token = 'Token 7b11c5356f05ab5803e8ab3968c24b4dc4f2a9bc'
-    x_secret = 'c69195188c7b13d12cbe4ac043be92bb28cb257d'
     full_name = self.full_name
-    resp = Dadata.new(auth_token, x_secret).response(full_name)
-    self.gender = Dadata.gender(resp)
-    self.last_request = Time.parse(Dadata.last_request(resp))
+    data = Dadata.check_gender(full_name)
+    self.gender = data[:gender]
+    self.last_request = data[:last_request]
   end
 end
