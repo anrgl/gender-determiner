@@ -60,7 +60,7 @@ class UsersController < ApplicationController
   def save_gender
     current_user.is_correct = true
     current_user.save
-    redirect_to root_path
+    redirect_to root_path, notice: "Gender correct!"
   end
 
   def check_gender
