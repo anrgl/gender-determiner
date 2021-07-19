@@ -4,7 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  before_save :last_request_and_gender
+  before_create :last_request_and_gender
+
+  def correct?
+    is_correct
+  end
 
   private
   def last_request_and_gender

@@ -15,7 +15,7 @@
         <td><%= user.full_name %></td>
         <td><%= user.gender %></td>
         <td><%= user.is_admin %></td>
-        <td><%= user.last_request.to_formatted_s(:short) %></td>
+        <td><%= user.last_request.in_time_zone('Europe/Moscow').to_formatted_s(:short) %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -24,10 +24,10 @@
   </tbody>
 </table>
 
-<div>
-  <h4>You gender: <%= current_user.gender %>. Correct?</h4>
-
-  <%= link_to "Correct", save_gender_path, method: :post, data: { confirm: 'Are you sure? '} %>
-  <%= link_to "Incorrect", edit_user_path(current_user) %>
-
-</div>
+<% unless current_user.correct? %>
+  <div>
+    <h4>You gender: <%= current_user.gender %>. Correct?</h4>
+    <%= link_to "Correct", users_save_gender_path, method: :post, data: { confirm: 'Are you sure? '} %>
+    <%= link_to "Incorrect", edit_user_path(current_user) %>
+  </div>
+<% end %>
