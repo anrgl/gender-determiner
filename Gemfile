@@ -30,7 +30,7 @@ gem 'devise', '~> 4.8'
 gem 'rest-client', '~> 2.1'
 
 group :development, :test do
-  gem 'sqlite3', '~> 1.4'
+  # gem 'sqlite3', '~> 1.4'
   gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end

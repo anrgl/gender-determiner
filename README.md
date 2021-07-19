@@ -3,6 +3,13 @@
 ## О проекте
 Приложение определяет пол человека по ФИО
 
+## Запуск
+```
+docker-compose run --rm web bash -c "bundle install"
+docker-compose run --rm web bash -c "rails db:create db:migrate"
+docker-compose up
+```
+
 ## Функциональность
 - Регистрация пользователя
 - Авторизация
