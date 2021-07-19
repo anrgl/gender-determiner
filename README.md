@@ -1,24 +1,21 @@
-# README
+# Gender Determiner
+## Ссылка на heroku -> [heroku](https://shielded-inlet-23394.herokuapp.com/)
+## О проекте
+Приложение определяет пол человека по ФИО
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Функциональность
+- Регистрация пользователя
+- Авторизация
+- Определение пола по ФИО
 
-Things you may want to cover:
+## Используемые технологии
+- Ruby 2.7
+- Ruby on Rails 6
+- PostgreSQL
+- Bootstrap CSS 5
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Изображения
+![Registration page](images/sign-up-page.png "Registration Page")
+![Login page](images/login-page.png "Login Page")
+![Index page](images/index-page.png "Index Page")
+![User editing page](images/edit-page.png "Edit Page")
