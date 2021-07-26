@@ -1,0 +1,27 @@
+.col
+  table.table.table-striped
+    thead
+      tr
+        th Full name
+        th Gender
+        th Is admin
+        th Last request
+        th colspan="4"
+    tbody
+      - @users.each do |user|
+        - if user == current_user || current_user.admin?
+          tr
+            td =user.full_name
+            td =user.gender
+            td =user.is_admin
+            td =user.last_request.in_time_zone('Europe/Moscow').to_formatted_s(:short)
+            td =link_to 'Show', user
+            td =link_to 'Edit', edit_user_path(user)
+            td =link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }
+            td =link_to "Check", check_gender_path(user), method: :post
+
+  - unless current_user.correct?
+    div
+      h4 You gender: #{current_user.gender}. Correct?
+      =link_to "Correct", users_save_gender_path, method: :post, data: { confirm: 'Are you sure? '}
+      =link_to "Incorrect", edit_user_path(current_user)
