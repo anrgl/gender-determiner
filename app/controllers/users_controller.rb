@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.all
+    @users = policy_scope(User)
   end
 
   # GET /users/1 or /users/1.json

@@ -1,9 +1,17 @@
 class UserPolicy < ApplicationPolicy
-  attr_reader :current_user, :model
+  class Scope < Scope
+    def initialize(user, scope)
+      @user = user
+      @scope = scope
+    end
 
-  def initialize(current_user, model)
-    @current_user = current_user
-    @model = model
+    def resolve
+      if user.admin?
+        scope.all
+      else
+        scope.where(id: user.id)
+      end
+    end
   end
 
   def edit?
@@ -20,6 +28,6 @@ class UserPolicy < ApplicationPolicy
 
   private
   def admin_or_user
-    @current_user.admin? || @current_user == @model
+    @user.admin? || @user == @record
   end
 end
