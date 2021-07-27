@@ -18,10 +18,10 @@
             td =link_to 'Show', user
             td =link_to 'Edit', edit_user_path(user)
             td =link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }
-            td =link_to "Check", check_gender_path(user), method: :post
+            td =link_to "Check", check_gender_path(user), method: :patch
 
   - unless current_user.correct?
     div
       h4 You gender: #{current_user.gender}. Correct?
-      =link_to "Correct", users_save_gender_path, method: :post, data: { confirm: 'Are you sure? '}
+      =link_to "Correct", users_save_gender_path, method: :patch, data: { confirm: 'Are you sure? '}
       =link_to "Incorrect", edit_user_path(current_user)
